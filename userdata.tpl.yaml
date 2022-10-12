@@ -1,0 +1,52 @@
+#cloud-config
+
+groups:
+  - docker
+
+users:
+  - name: ${github_user}
+    ssh_import_id:
+      - gh:${github_user}
+    shell: /usr/bin/bash
+    groups:
+      - sudo
+      - users
+      - docker
+
+ssh_pwauth: false
+
+apt:
+  sources:
+    tailscale.list:
+      source: deb https://pkgs.tailscale.com/stable/ubuntu $RELEASE main
+      keyid: 2596A99EAAB33821893C0A79458CA832957F5868
+    docker.list:
+      source: deb https://download.docker.com/linux/ubuntu $RELEASE stable
+      keyid: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+    kubernetes.list:
+      source: deb https://apt.kubernetes.io/ kubernetes-xenial main
+      keyid: 59FE0256827269DC81578F928B57C5C2836F4BEB
+
+packages:
+  - tailscale
+  
+  - docker-ce
+  - docker-ce-cli
+  - kubectl
+
+  - git
+  - build-essential
+  - zip
+  - zlib1g-dev
+  - jq
+
+runcmd:
+  - tailscale up -authkey ${tailscale_auth_key}
+  - su - ${github_user} -c 'curl -s "https://get.sdkman.io" | bash'
+  - su - ${github_user} -c 'source "$HOME/.sdkman/bin/sdkman-init.sh"'
+  - su - ${github_user} -c 'sdk install java 22.0.0.2.r17-grl'
+
+chpasswd:
+  list: |
+     ${github_user}:bootiful
+  expire: True
