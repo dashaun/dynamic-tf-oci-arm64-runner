@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout master
-        uses: actions/checkout@v2
-        with:
-          submodules: true
+#      - name: Checkout master
+#        uses: actions/checkout@v2
+#        with:
+#          submodules: true
       - name: Terraform Cloud Workspace
         run: |
           curl -X POST https://api.github.com/repos/dashaun/terraform-cloud/dispatches \
