@@ -16,21 +16,7 @@ variable "tailscale_auth_key" {
 
 variable "display_name" {
   type      = string
+  default = ephemeral
   sensitive = false
   nullable  = false
-}
-
-variable "backend_remote_org" {
-  type     = string
-  nullable = false
-}
-
-variable "backend_remote_workspace" {
-  type     = string
-  nullable = false
-}
-
-variable "tfe_email" {
-  type     = string
-  nullable = false
 }

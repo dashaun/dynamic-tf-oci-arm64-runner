@@ -16,6 +16,11 @@ jobs:
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "init '"$GITHUB_REPOSITORY"'", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          export TF_WORKSPACE=dynamic-tf-oci-arm64-runner
+          export TF_CLOUD_ORGANIZATION=dashaun
+          export TF_VAR_github_user=dashaun
+          export TF_VAR_oci_compartment_id=${{ secrets.OCI_COMPARTMENT_ID }}
+          export TF_VAR_tailscale_auth_key=${{ secrets.TAILSCALE_AUTH_TOKEN }}
 
       - name: Checkout master
         uses: actions/checkout@v2
@@ -26,9 +31,6 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: terraform init
-        env:
-          TF_WORKSPACE: dynamic-tf-oci-arm64-runner
-          TF_CLOUD_ORGANIZATION: dashaun
         run: terraform init
 
       - name: terraform validate
@@ -36,25 +38,16 @@ jobs:
         run: terraform validate -no-color
 
       - name: terraform plan
-        env:
-          TF_WORKSPACE: dynamic-tf-oci-arm64-runner
-          TF_CLOUD_ORGANIZATION: dashaun
         id: plan
         run: terraform plan -no-color
         continue-on-error: true
 
       - name: terraform apply
-        env:
-          TF_WORKSPACE: dynamic-tf-oci-arm64-runner
-          TF_CLOUD_ORGANIZATION: dashaun
         id: apply
         if: steps.plan.outcome == 'success'
         run: terraform apply -auto-approve
 
       - name: terraform destroy
-        env:
-          TF_WORKSPACE: dynamic-tf-oci-arm64-runner
-          TF_CLOUD_ORGANIZATION: dashaun
         id: destroy
         if: steps.plan.apply == 'success'
         run: terraform destroy -auto-approve
