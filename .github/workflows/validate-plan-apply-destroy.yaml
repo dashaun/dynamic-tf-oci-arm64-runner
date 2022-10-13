@@ -45,7 +45,6 @@ jobs:
           TF_WORKSPACE: dynamic-tf-oci-arm64-runner
           TF_CLOUD_ORGANIZATION: dashaun
           TF_VAR_github_user: dashaun
-          TF_VAR_oci_compartment_id: ${{ secrets.OCI_COMPARTMENT_ID }}
           TF_VAR_tailscale_auth_key: ${{ secrets.TAILSCALE_AUTH_TOKEN }}
           TF_VAR_tenancy_ocid: ${{ secrets.OCI_TENANCY_ID }}
           TF_VAR_compartment_ocid: ${{ secrets.OCI_COMPARTMENT_ID }}

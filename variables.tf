@@ -3,7 +3,7 @@ variable "github_user" {
   nullable = false
 }
 
-variable "oci_compartment_id" {
+variable "compartment_ocid" {
   type     = string
   nullable = false
 }
@@ -19,4 +19,33 @@ variable "display_name" {
   default   = "ephemeral"
   sensitive = false
   nullable  = false
+}
+
+variable "tenancy_ocid" {
+  type      = string
+  sensitive = true
+  nullable  = false
+}
+
+variable "user_ocid" {
+  type      = string
+  sensitive = true
+  nullable  = false
+}
+
+variable "fingerprint" {
+  type      = string
+  sensitive = true
+  nullable  = false
+}
+
+variable "private_key" {
+  type      = string
+  sensitive = true
+  nullable  = false
+}
+
+variable "region" {
+  type    = string
+  default = "us-ashburn-1"
 }

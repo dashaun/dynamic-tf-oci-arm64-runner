@@ -1,6 +1,6 @@
 resource "oci_core_instance" "oracle-arm" {
   display_name   = var.display_name
-  compartment_id = var.oci_compartment_id
+  compartment_id = var.compartment_ocid
 
   shape = data.oci_core_images.ampere-ubuntu-images.shape
   shape_config {
