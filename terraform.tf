@@ -1,10 +1,5 @@
 terraform {
-  cloud {
-
-    workspaces {
-      tags = ["dynamic"]
-    }
-  }
+  cloud {}
 
   required_providers {
     oci = {
