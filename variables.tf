@@ -16,7 +16,7 @@ variable "tailscale_auth_key" {
 
 variable "display_name" {
   type      = string
-  default = ephemeral
+  default   = "ephemeral"
   sensitive = false
   nullable  = false
 }
