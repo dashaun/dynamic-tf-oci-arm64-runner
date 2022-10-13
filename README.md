@@ -5,3 +5,5 @@ needed to deliver a self-hosted github action runner
 for ARM64 workloads.
 
 It can be checked out and ran by providing the necessary variables.
+
+See Also: [Stealthybox/tf-oci-arm](https://github.com/stealthybox/tf-oci-arm)

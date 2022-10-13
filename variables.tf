@@ -49,3 +49,9 @@ variable "region" {
   type    = string
   default = "us-ashburn-1"
 }
+
+variable "gh_runner_token" {
+  type = string
+  sensitive = true
+  nullable  = false
+}

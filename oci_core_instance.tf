@@ -22,6 +22,7 @@ resource "oci_core_instance" "oracle-arm" {
         {
           github_user        = var.github_user,
           tailscale_auth_key = var.tailscale_auth_key,
+          github_runner_token = var.gh_runner_token
         }
       )
     )

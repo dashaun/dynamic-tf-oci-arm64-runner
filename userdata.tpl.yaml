@@ -45,6 +45,13 @@ runcmd:
   - su - ${github_user} -c 'curl -s "https://get.sdkman.io" | bash'
   - su - ${github_user} -c 'source "$HOME/.sdkman/bin/sdkman-init.sh"'
   - su - ${github_user} -c 'sdk install java 22.0.0.2.r17-grl'
+  - mkdir /actions-runner
+  - cd /actions-runner
+  - curl -o actions-runner-linux-arm64-2.298.2.tar.gz -L https://github.com/actions/runner/releases/download/v2.298.2/actions-runner-linux-arm64-2.298.2.tar.gz
+  - echo "803e4aba36484ef4f126df184220946bc151ae1bbaf2b606b6e2f2280f5042e8  actions-runner-linux-arm64-2.298.2.tar.gz" | shasum -a 256 -c
+  - tar xzf ./actions-runner-linux-arm64-2.298.2.tar.gz
+  - ./config.sh --url https://github.com/bbqwednesday --token ${gh_runner_token}
+  - su - ${github_user} -c '/actions-runner/svc.sh install'
 
 chpasswd:
   list: |
