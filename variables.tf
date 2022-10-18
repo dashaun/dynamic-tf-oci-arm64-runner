@@ -1,3 +1,13 @@
+variable "github_api_token" {
+  type      = string
+  sensitive = true
+  nullable  = false
+}
+
+variable "github_org" {
+  type     = string
+  nullable = false
+}
 variable "github_user" {
   type     = string
   nullable = false
@@ -50,8 +60,3 @@ variable "region" {
   default = "us-ashburn-1"
 }
 
-variable "gh_runner_token" {
-  type = string
-  sensitive = true
-  nullable  = false
-}

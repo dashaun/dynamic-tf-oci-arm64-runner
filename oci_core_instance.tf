@@ -20,9 +20,10 @@ resource "oci_core_instance" "oracle-arm" {
       templatefile(
         "userdata.tpl.yaml",
         {
+          github_org         = var.github_org,
           github_user        = var.github_user,
           tailscale_auth_key = var.tailscale_auth_key,
-          github_runner_token = var.gh_runner_token
+          github_api_token   = var.github_api_token
         }
       )
     )
