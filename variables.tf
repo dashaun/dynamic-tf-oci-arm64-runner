@@ -43,13 +43,13 @@ variable "user_ocid" {
   nullable  = false
 }
 
-variable "oci_fingerprint" {
+variable "fingerprint" {
   type      = string
   sensitive = true
   nullable  = false
 }
 
-variable "oci_private_key" {
+variable "private_key" {
   type      = string
   sensitive = true
   nullable  = false
