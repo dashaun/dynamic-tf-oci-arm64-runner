@@ -43,20 +43,19 @@ variable "user_ocid" {
   nullable  = false
 }
 
-variable "fingerprint" {
+variable "oci_fingerprint" {
   type      = string
   sensitive = true
   nullable  = false
 }
 
-variable "private_key" {
+variable "oci_private_key" {
   type      = string
   sensitive = true
   nullable  = false
 }
 
-variable "region" {
+variable "oci_region" {
   type    = string
   default = "us-ashburn-1"
 }
-
