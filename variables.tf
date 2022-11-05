@@ -51,6 +51,8 @@ variable "oci_fingerprint" {
 
 variable "oci_private_key" {
   type      = string
+  sensitive = true
+  nullable  = false
 }
 
 variable "oci_region" {
