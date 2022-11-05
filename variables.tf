@@ -54,3 +54,8 @@ variable "private_key" {
   sensitive = true
   nullable  = false
 }
+
+variable "oci_region" {
+  type    = string
+  default = "us-ashburn-1"
+}

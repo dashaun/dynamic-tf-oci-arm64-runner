@@ -14,5 +14,5 @@ provider "oci" {
   user_ocid    = var.user_ocid
   fingerprint  = var.fingerprint
   private_key  = var.private_key
-#  region       = var.oci_region
+  region       = var.oci_region
 }
